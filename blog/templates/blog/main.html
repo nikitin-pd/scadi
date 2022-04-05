@@ -1,0 +1,30 @@
+<h3>Добро пожаловать @{{ user.username }}</h3>
+<form action="{% url 'myprofile' %}">
+    <h3><button>
+        📗 Мой профиль 📗
+    </button></h3>
+</form>
+<form action="{% url 'my_messages' %}">
+    <h3><button>
+            ✉️ Личные сообщения ✉️
+    </button></h3>
+</form>
+<form action="{% url 'logout_page' %}">
+    <h3><button>
+        ❌ Выйти ❌
+    </button></h3>
+</form>
+<h1>-----------------------</h1>
+{% for i in users %}
+    <h2><a href="{% url 'user' i.id %}">{{ i.first_name }} {{ i.last_name }}</a></h2>
+    {% for j in i.post.all %}
+        <h4><a href="{% url 'post' j.id %}">• {{ j.post_name }}</a></h4>
+    {% endfor %}
+    <h1>-----------------------</h1>
+{% endfor %}
+<form action="{% url 'create_post' user.id %}">
+    <h3><button>
+        ✍ Создать пост ✍
+    </button></h3>
+</form>
+

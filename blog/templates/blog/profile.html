@@ -1,0 +1,10 @@
+<h1>{{ user.first_name }} {{ user.last_name }}</h1>
+<h3>(@{{ user.username }})</h3>
+{% for i in posts %}
+    <h2><a href="{% url 'post' i.id %}">{{ i.post_name }}</a></h2>
+{% endfor %}
+<h1>-----------------------</h1>
+<form action="{% url 'main' %}">
+    <h3><button>Вернуться назад</button></h3>
+</form>
+

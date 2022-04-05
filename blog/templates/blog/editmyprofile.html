@@ -1,0 +1,14 @@
+<h1>-----------------------</h1>
+<h2>Редактировать мой профиль</h2>
+<h3>Логин: {{ user.username }}</h3>
+<form method="POST" class="post-form">{% csrf_token %}
+    <h3>{{ form1.as_p }}</h3>
+    <h3>{{ form2.as_p }}</h3>
+    <h1>-----------------------</h1>
+    <h3><button type="submit" class="save btn btn-default">
+        Сохранить
+    </button></h3>
+</form>
+<form action="{% url 'main' %}">
+    <h3><button>Вернуться назад</button></h3>
+</form>

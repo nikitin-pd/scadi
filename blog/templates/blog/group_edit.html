@@ -1,0 +1,26 @@
+<h2>Учасники группы</h2>
+<h6>(Нажмите что бы удалить)</h6>
+{% for i in memebers_in %}
+    <form action="{% url 'group_edit_del' group.id i.id %}">
+        <h3><button>❌</button> {{ i }}</h3>
+    </form>
+{% endfor %}
+<h4>----------------------------------------------</h4>
+{% if users not in memebers_in %}
+    <h2>Добавить новых учасников</h2>
+    <h6>(Нажмите что бы добавить)</h6>
+    {% for i in users %}
+        {% if i not in memebers_in %}
+            <form action="{% url 'group_edit_add' group.id i.id %}">
+                <h3><button>➕</button> {{ i }}</h3>
+            </form>
+        {% endif %}
+    {% endfor %}
+    <form action="{% url 'main' %}">
+        <h3><button>Вернуться назад</button></h3>
+    </form>
+{% else %}
+<form action="{% url 'main' %}">
+    <h3><button>Вернуться назад</button></h3>
+</form>
+{% endif %}

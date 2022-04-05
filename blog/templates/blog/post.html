@@ -1,0 +1,34 @@
+<h1>{{ post_name }}</h1>
+<h1>-----------------------</h1>
+<h2>{{ post_text }}</h2>
+<h2>{{ author }}  {{ release_date }}</h2>
+<h1>-----------------------</h1>
+{% for i in comments %}
+    <h4>{{ i.comment_text }}</a></h4>
+    <h4><a href="{% url 'user' i.author.id %}">@{{ i.author.username }}</a> {{ i.release_date }}</a></h4>
+    {% if i.author == user %}
+    <form action="{% url 'comment_edit' i.id %}">
+        <h4><button>
+            Редактировать
+        </button></h4>
+    </form>
+    {% endif %}
+    {% if author == user %}
+        <form action="{% url 'comment_delete' i.id %}">
+            <h4><button>
+                Удалить
+            </button></h4>
+        </form>
+    {% endif %}
+    <h4>----------------------------------------------</h4>
+{% endfor %}
+<form method="POST" class="post-form">{% csrf_token %}
+    <h3>{{ form.as_p }}</h3>
+    <h3><button type="submit" class="save btn btn-default">
+        Добавить комментарий
+    </button></h3>
+</form>
+<h1>-----------------------</h1>
+<form action="{% url 'main' %}">
+    <h3><button>Вернуться назад</button></h3>
+</form>

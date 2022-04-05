@@ -1,0 +1,11 @@
+<h2>Новое сообщение</h2>
+<form method="POST" class="post-form">{% csrf_token %}
+    <h3>Получатель: {{recipient.username}}</h3>
+    <h3>{{ form.as_p }}</h3>
+    <h3><button type="submit" class="save btn btn-default">
+        Отправить
+    </button></h3>
+</form>
+<form action="{% url 'main' %}">
+    <h3><button>Вернуться назад</button></h3>
+</form>

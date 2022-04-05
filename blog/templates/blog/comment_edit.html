@@ -1,0 +1,9 @@
+<h1>-----------------------</h1>
+<h2>Редактировать комментарий</h2>
+<form method="POST" class="post-form">{% csrf_token %}
+    <h3>{{ form.as_p }}</h3>
+    <h3><button type="submit" class="save btn btn-default">
+        Сохранить изменения
+    </button></h3>
+</form>
+<h1>-----------------------</h1>

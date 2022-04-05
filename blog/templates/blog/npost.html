@@ -1,0 +1,14 @@
+<h1>{{ post_name }}</h1>
+<h1>-----------------------</h1>
+<h2>{{ post_text }}</h2>
+<h2>{{ author }} {{ release_date }}</h2>
+<h1>-----------------------</h1>
+<form action="{% url 'login_page' %}">
+    <h3><button>
+        Войдите что бы прокомментировать пост
+    </button></h3>
+</form>
+<h1>-----------------------</h1>
+<form action="{% url 'main' %}">
+    <h3><button>Вернуться назад</button></h3>
+</form>

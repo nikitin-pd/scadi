@@ -1,0 +1,20 @@
+<form action="{% url 'login_page' %}">
+    <h3><button>
+        Авторизация
+    </button></h3>
+</form>
+<form action="{% url 'reg_page' %}">
+    <h3><button>
+        Регистрация
+    </button></h3>
+</form>
+<h1>-----------------------</h1>
+{% for i in users %}
+    <h2><a href="{% url 'user' i.id %}">{{ i.first_name }} {{ i.last_name }}</a></h2>
+    {% for j in i.post.all %}
+        <h4><a href="{% url 'post' j.id %}">• {{ j.post_name }}</a></h4>
+    {% endfor %}
+    <h1>-----------------------</h1>
+{% endfor %}
+
+

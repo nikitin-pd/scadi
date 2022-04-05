@@ -1,0 +1,33 @@
+{% if dialog.flag == True %}
+    <h2>{{ dialog.name }}</h2>
+    <h4>Учасники: </h4>
+        {% for i in dialog.members.all %}
+            <h4><a href="{% url 'user' i.id %}">{{ i.username }}</a></h4>
+        {% endfor %}
+{% else %}
+    {% for j in dialog.members.all %}
+        {% if j != user %}
+            <h2>Диалог с <a href="{% url 'user' j.id %}">{{ j.username }}</a></h2>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+<h4>----------------------------------------------</h4>
+{% for i in dialog.message.all %}
+    <h2>{{ i.text }}</h2>
+    <h4>{{ i.user }} {{ i.send_date }}</h4>
+    <h4>----------------------------------------------</h4>
+{% endfor %}
+<form method="POST" class="post-form">{% csrf_token %}
+    <h3>{{ form.as_p }}</h3>
+    <h3><button type="submit" class="save btn btn-default">
+            Отправить
+        </button></h3>
+</form>
+{% if dialog.flag == True %}
+    <form action="{% url 'group_edit' dialog.id %}">
+        <h3><button>Редактировать группу</button></h3>
+    </form>
+{% endif %}
+<form action="{% url 'main' %}">
+    <h3><button>Вернуться назад</button></h3>
+</form>

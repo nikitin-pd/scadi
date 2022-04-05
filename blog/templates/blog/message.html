@@ -1,0 +1,9 @@
+<h1>-----------------------</h1>
+<h3>{{ message.sender }}</h3>
+<h3>{{ message.title }}</h3>
+<h4>{{ message.text }}</h4>
+<h4>{{ message.send_date }}</h4>
+<h3>----------------------------------------------</h3>
+<form action="{% url 'main' %}">
+    <h3><button>Вернуться назад</button></h3>
+</form>

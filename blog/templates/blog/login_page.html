@@ -1,0 +1,15 @@
+<h2>Войти</h2>
+<form method="POST" class="post-form">{% csrf_token %}
+    <h3>{{ form.as_p }}</h3>
+    <h3><button type="submit">
+        Войти
+    </button></h3>
+</form>
+<form action="{% url 'reg_page' %}">
+    <h3><button>
+        Нет аккаунта
+    </button></h3>
+</form>
+<form action="{% url 'main' %}">
+    <h3><button>Вернуться назад</button></h3>
+</form>

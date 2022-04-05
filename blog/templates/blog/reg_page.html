@@ -1,0 +1,15 @@
+<h2>Новый автор</h2>
+<form method="POST" class="post-form">{% csrf_token %}
+    <h3>{{ form.as_p }}</h3>
+    <h3><button type="submit" class="save btn btn-default">
+        Зарегистрироваться
+    </button></h3>
+</form>
+<form action="{% url 'login_page' %}">
+    <h3><button>
+        Уже есть аккаунт
+    </button></h3>
+</form>
+<form action="{% url 'main' %}">
+    <h3><button>Вернуться назад</button></h3>
+</form>

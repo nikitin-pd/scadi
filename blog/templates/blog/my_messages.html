@@ -1,0 +1,22 @@
+<h2>Личные сообщения</h2>
+<h1>-----------------------</h1>
+{% for i in dialogs %}
+    {% if i.flag == True %}
+        <h2><a href="{% url 'dialog' i.id %}">{{ i.name }} (Группа)</a></h2>
+        <h5>{{ i.send_date }}</h5>
+    {% else %}
+        {% for j in i.members.all %}
+            {% if j != user %}
+                <h2><a href="{% url 'dialog' i.id %}">{{ j }}</a></h2>
+                <h5>{{ i.send_date }}</h5>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    <h4>----------------------------------------------</h4>
+{% endfor %}
+<form action="{% url 'new_group' %}">
+    <h3><button>➕ Создать новую группу ➕</button></h3>
+</form>
+<form action="{% url 'main' %}">
+    <h3><button>Вернуться назад</button></h3>
+</form>
